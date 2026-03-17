@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Gold palette - shadcn semantic naming */
+    --gold: #C9933A;
+    --gold-light: #E8B86D;
+    --gold-dark: #8B6020;
+    --gold-dim: #3A2E18;
+
+    /* Backgrounds */
+    --background: #0f0f0f;
+    --foreground: #E8B86D;
+    
+    --card: #1A1A1A;
+    --card-foreground: #E8B86D;
+    
+    --popover: #1A1A1A;
+    --popover-foreground: #E8B86D;
+    
+    --muted: #1A1A1A;
+    --muted-foreground: #9A7840;
+    
+    --accent: #3A2E18;
+    --accent-foreground: #E8B86D;
+    
+    --destructive: #8B3A3A;
+    --destructive-foreground: #E8B86D;
+
+    /* Borders */
+    --border: #2A2A2A;
+    --input: #3A3A3A;
+    --ring: #C9933A;
+
+    /* Semantic */
+    --success: #4A7C59;
+    --warning: #C9933A;
+    --info: #3A6B7C;
+
+    /* Radius */
+    --radius: 4px;
+
+    /* Fonts */
+    --font-display: "Cormorant Garamond", Georgia, serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-mono;
+  }
+}
