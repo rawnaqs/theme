@@ -20,8 +20,8 @@ const (
 	BorderGold   = "#3A2E18"
 
 	TextPrimary   = "#E8B86D"
-	TextSecondary = "#9A7840"
-	TextTertiary  = "#5A4A28"
+	TextSecondary = "#8A6B35"
+	TextTertiary  = "#6A5530"
 
 	Success = "#4A7C59"
 	Warning = "#C9933A"
