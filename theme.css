@@ -9,8 +9,8 @@
     /* Gold palette - shadcn semantic naming */
     --gold: #C9933A;
     --gold-light: #E8B86D;
-    --gold-dark: #8B6020;
-    --gold-dim: #3A2E18;
+    --gold-dark: #A67830;
+    --gold-dim: #6B5530;
 
     /* Backgrounds */
     --background: #0f0f0f;
@@ -23,9 +23,9 @@
     --popover-foreground: #E8B86D;
     
     --muted: #1A1A1A;
-    --muted-foreground: #8A6B35;
+    --muted-foreground: #A67830;
     
-    --accent: #3A2E18;
+    --accent: #5A4520;
     --accent-foreground: #E8B86D;
     
     --destructive: #8B3A3A;

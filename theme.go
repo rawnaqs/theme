@@ -7,8 +7,8 @@ import "github.com/charmbracelet/lipgloss"
 const (
 	Gold      = "#C9933A"
 	GoldLight = "#E8B86D"
-	GoldDark  = "#8B6020"
-	GoldDim   = "#3A2E18"
+	GoldDark  = "#A67830"
+	GoldDim   = "#6B5530"
 
 	BgBase     = "#0f0f0f"
 	BgRaised   = "#1A1A1A"
@@ -17,11 +17,11 @@ const (
 
 	BorderSubtle = "#2A2A2A"
 	Border       = "#3A3A3A"
-	BorderGold   = "#3A2E18"
+	BorderGold   = "#5A4520"
 
 	TextPrimary   = "#E8B86D"
-	TextSecondary = "#8A6B35"
-	TextTertiary  = "#6A5530"
+	TextSecondary = "#A67830"
+	TextTertiary  = "#6B5530"
 
 	Success = "#4A7C59"
 	Warning = "#C9933A"
@@ -46,11 +46,11 @@ var (
 		Light: "#5A3A10",
 	}
 	ColorGoldDark = lipgloss.AdaptiveColor{
-		Dark:  "#8B6020",
-		Light: "#8B6020",
+		Dark:  "#A67830",
+		Light: "#A67830",
 	}
 	ColorGoldDim = lipgloss.AdaptiveColor{
-		Dark:  "#3A2E18",
+		Dark:  "#6B5530",
 		Light: "#C0A060",
 	}
 	ColorSuccess = lipgloss.AdaptiveColor{
@@ -82,7 +82,7 @@ var (
 		Light: "#D0C8B8",
 	}
 	ColorBorderGold = lipgloss.AdaptiveColor{
-		Dark:  "#3A2E18",
+		Dark:  "#5A4520",
 		Light: "#B09060",
 	}
 )
