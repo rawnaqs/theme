@@ -1,8 +1,14 @@
 package theme
 
-import "strings"
+import (
+	"strings"
 
-import "github.com/charmbracelet/lipgloss"
+	"github.com/charmbracelet/lipgloss"
+)
+
+/*
+Avoid creating this file with tokens.json those are for brand identiy and this file is for clis and respects the users terminal themes
+*/
 
 const (
 	Gold      = "#C9933A"
@@ -37,90 +43,39 @@ const (
 )
 
 var (
-	ColorGold = lipgloss.AdaptiveColor{
-		Dark:  "#C9933A",
-		Light: "#7A5010",
-	}
-	ColorGoldLight = lipgloss.AdaptiveColor{
-		Dark:  "#E8B86D",
-		Light: "#5A3A10",
-	}
-	ColorGoldDark = lipgloss.AdaptiveColor{
-		Dark:  "#A67830",
-		Light: "#A67830",
-	}
-	ColorGoldDim = lipgloss.AdaptiveColor{
-		Dark:  "#6B5530",
-		Light: "#C0A060",
-	}
-	ColorSuccess = lipgloss.AdaptiveColor{
-		Dark:  "#4A7C59",
-		Light: "#2A5C39",
-	}
-	ColorError = lipgloss.AdaptiveColor{
-		Dark:  "#8B3A3A",
-		Light: "#6B1A1A",
-	}
-	ColorWarning = lipgloss.AdaptiveColor{
-		Dark:  "#C9933A",
-		Light: "#7A5010",
-	}
-	ColorInfo = lipgloss.AdaptiveColor{
-		Dark:  "#3A6B7C",
-		Light: "#1A4B5C",
-	}
-	ColorBg = lipgloss.AdaptiveColor{
-		Dark:  "#0f0f0f",
-		Light: "#FFFFFF",
-	}
-	ColorBgRaised = lipgloss.AdaptiveColor{
-		Dark:  "#1A1A1A",
-		Light: "#F5F0E8",
-	}
-	ColorBorder = lipgloss.AdaptiveColor{
-		Dark:  "#2A2A2A",
-		Light: "#D0C8B8",
-	}
-	ColorBorderGold = lipgloss.AdaptiveColor{
-		Dark:  "#5A4520",
-		Light: "#B09060",
-	}
-)
-
-var (
-	Primary = lipgloss.NewStyle().Foreground(ColorGoldLight)
-	Muted   = lipgloss.NewStyle().Foreground(ColorGoldDark)
-	Dim     = lipgloss.NewStyle().Foreground(ColorGoldDim)
-	Bold    = lipgloss.NewStyle().Foreground(ColorGoldLight).Bold(true)
-	Italic  = lipgloss.NewStyle().Foreground(ColorGoldDark).Italic(true)
+	Primary = lipgloss.NewStyle().Foreground(lipgloss.Color("15"))
+	Muted   = lipgloss.NewStyle().Foreground(lipgloss.Color("7"))
+	Dim     = lipgloss.NewStyle().Foreground(lipgloss.Color("8"))
+	Bold    = lipgloss.NewStyle().Foreground(lipgloss.Color("15")).Bold(true)
+	Italic  = lipgloss.NewStyle().Foreground(lipgloss.Color("7")).Italic(true)
 	Inverse = lipgloss.NewStyle().
-		Foreground(ColorBg).
-		Background(ColorGold)
+		Foreground(lipgloss.Color("0")).
+		Background(lipgloss.Color("15"))
 
-	SuccessStyle    = lipgloss.NewStyle().Foreground(ColorSuccess).Bold(true)
-	ErrorStyle      = lipgloss.NewStyle().Foreground(ColorError).Bold(true)
-	WarningStyle    = lipgloss.NewStyle().Foreground(ColorWarning).Bold(true)
-	InfoStyle       = lipgloss.NewStyle().Foreground(ColorInfo)
-	ProcessingStyle = lipgloss.NewStyle().Foreground(ColorGoldDark).Italic(true)
+	SuccessStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("2")).Bold(true)
+	ErrorStyle      = lipgloss.NewStyle().Foreground(lipgloss.Color("1")).Bold(true)
+	WarningStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("3")).Bold(true)
+	InfoStyle       = lipgloss.NewStyle().Foreground(lipgloss.Color("6"))
+	ProcessingStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("3")).Italic(true)
 
 	Panel = lipgloss.NewStyle().
 		Border(lipgloss.RoundedBorder()).
-		BorderForeground(ColorGoldDim).
+		BorderForeground(lipgloss.Color("8")).
 		Padding(0, 1)
 
 	PanelGold = lipgloss.NewStyle().
 			Border(lipgloss.RoundedBorder()).
-			BorderForeground(ColorGold).
+			BorderForeground(lipgloss.Color("3")).
 			Padding(0, 1)
 
 	Tag = lipgloss.NewStyle().
-		Foreground(ColorBg).
-		Background(ColorGold).
+		Foreground(lipgloss.Color("0")).
+		Background(lipgloss.Color("3")).
 		PaddingLeft(1).PaddingRight(1)
 
 	TagMuted = lipgloss.NewStyle().
-			Foreground(ColorGoldLight).
-			Background(ColorBgRaised).
+			Foreground(lipgloss.Color("8")).
+			Background(lipgloss.Color("0")).
 			PaddingLeft(1).PaddingRight(1)
 )
 
