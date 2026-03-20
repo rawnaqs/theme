@@ -7,7 +7,9 @@ import (
 )
 
 /*
-Avoid creating this file with tokens.json those are for brand identiy and this file is for clis and respects the users terminal themes
+This file is for CLIs only — respects the user's terminal theme via ANSI colors.
+The hex constants below are for brand identity (CSS, web, Python) — never use them in styles here.
+All styles use ANSI color codes so Catppuccin, Dracula, Nord, Gruvbox etc. all look correct.
 */
 
 const (
@@ -42,43 +44,119 @@ const (
 	RadiusLg = 8
 )
 
+// ── Base styles ───────────────────────────────────────────────────────────────
 var (
-	Primary = lipgloss.NewStyle().Foreground(lipgloss.Color("15"))
-	Muted   = lipgloss.NewStyle().Foreground(lipgloss.Color("7"))
-	Dim     = lipgloss.NewStyle().Foreground(lipgloss.Color("8"))
+	Primary = lipgloss.NewStyle().Foreground(lipgloss.Color("15")) // bright white
+	Muted   = lipgloss.NewStyle().Foreground(lipgloss.Color("7"))  // white
+	Dim     = lipgloss.NewStyle().Foreground(lipgloss.Color("8"))  // bright black
 	Bold    = lipgloss.NewStyle().Foreground(lipgloss.Color("15")).Bold(true)
 	Italic  = lipgloss.NewStyle().Foreground(lipgloss.Color("7")).Italic(true)
 	Inverse = lipgloss.NewStyle().
 		Foreground(lipgloss.Color("0")).
 		Background(lipgloss.Color("15"))
+)
 
-	SuccessStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("2")).Bold(true)
-	ErrorStyle      = lipgloss.NewStyle().Foreground(lipgloss.Color("1")).Bold(true)
-	WarningStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("3")).Bold(true)
-	InfoStyle       = lipgloss.NewStyle().Foreground(lipgloss.Color("6"))
-	ProcessingStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("3")).Italic(true)
+// ── Status styles ─────────────────────────────────────────────────────────────
+var (
+	SuccessStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("2")).Bold(true)   // green
+	ErrorStyle      = lipgloss.NewStyle().Foreground(lipgloss.Color("1")).Bold(true)   // red
+	WarningStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("3")).Bold(true)   // yellow
+	InfoStyle       = lipgloss.NewStyle().Foreground(lipgloss.Color("6"))              // cyan
+	ProcessingStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("3")).Italic(true) // yellow italic
+)
 
+// ── Panel styles ──────────────────────────────────────────────────────────────
+var (
 	Panel = lipgloss.NewStyle().
 		Border(lipgloss.RoundedBorder()).
 		BorderForeground(lipgloss.Color("8")).
 		Padding(0, 1)
 
-	PanelGold = lipgloss.NewStyle().
+	PanelAccent = lipgloss.NewStyle().
 			Border(lipgloss.RoundedBorder()).
 			BorderForeground(lipgloss.Color("3")).
 			Padding(0, 1)
+)
 
+// ── Tag styles ────────────────────────────────────────────────────────────────
+var (
+	// Tag — yellow, used for text note tags
 	Tag = lipgloss.NewStyle().
-		Foreground(lipgloss.Color("0")).
-		Background(lipgloss.Color("3")).
+		Foreground(lipgloss.Color("3")).
+		Background(lipgloss.Color("0")).
 		PaddingLeft(1).PaddingRight(1)
 
+	// TagArticle — blue, used for article note tags
+	TagArticle = lipgloss.NewStyle().
+			Foreground(lipgloss.Color("4")).
+			Background(lipgloss.Color("0")).
+			PaddingLeft(1).PaddingRight(1)
+
+	// TagImage — magenta, used for image note tags
+	TagImage = lipgloss.NewStyle().
+			Foreground(lipgloss.Color("5")).
+			Background(lipgloss.Color("0")).
+			PaddingLeft(1).PaddingRight(1)
+
+	// TagMuted — dim, used for secondary/metadata tags
 	TagMuted = lipgloss.NewStyle().
 			Foreground(lipgloss.Color("8")).
 			Background(lipgloss.Color("0")).
 			PaddingLeft(1).PaddingRight(1)
 )
 
+// ── Type badge styles ─────────────────────────────────────────────────────────
+var (
+	// TypeText — green badge for text captures
+	TypeText = lipgloss.NewStyle().
+			Foreground(lipgloss.Color("2")).
+			Background(lipgloss.Color("0")).
+			Bold(true).
+			PaddingLeft(1).PaddingRight(1)
+
+	// TypeArticle — blue badge for article captures
+	TypeArticle = lipgloss.NewStyle().
+			Foreground(lipgloss.Color("4")).
+			Background(lipgloss.Color("0")).
+			Bold(true).
+			PaddingLeft(1).PaddingRight(1)
+
+	// TypeImage — magenta badge for image captures
+	TypeImage = lipgloss.NewStyle().
+			Foreground(lipgloss.Color("5")).
+			Background(lipgloss.Color("0")).
+			Bold(true).
+			PaddingLeft(1).PaddingRight(1)
+)
+
+// ── Search result styles ──────────────────────────────────────────────────────
+var (
+	// SearchTitle — bright, bold — most prominent element per result
+	SearchTitle = lipgloss.NewStyle().
+			Foreground(lipgloss.Color("15")).
+			Bold(true)
+
+	// SearchScore — dim, right-aligned — present but not dominant
+	SearchScore = lipgloss.NewStyle().
+			Foreground(lipgloss.Color("8"))
+
+	// SearchDate — muted
+	SearchDate = lipgloss.NewStyle().
+			Foreground(lipgloss.Color("8"))
+
+	// SearchExcerpt — italic, muted, with left border
+	SearchExcerpt = lipgloss.NewStyle().
+			Foreground(lipgloss.Color("7")).
+			Italic(true).
+			BorderLeft(true).
+			BorderStyle(lipgloss.NormalBorder()).
+			BorderForeground(lipgloss.Color("8")).
+			PaddingLeft(1)
+)
+
+// ── Helper functions ──────────────────────────────────────────────────────────
+
+// CaptureOK renders: ✓ saved · #tag1 #tag2 · 3ms
 func CaptureOK(action, tags, duration string) string {
 	return SuccessStyle.Render("✓") + " " +
 		Primary.Render(action) + " " +
@@ -86,20 +164,47 @@ func CaptureOK(action, tags, duration string) string {
 		Dim.Render("· "+duration)
 }
 
+// CaptureQueued renders: ⏳ queued · type · id: xyz
 func CaptureQueued(jobType, id string) string {
 	return ProcessingStyle.Render("⏳") + " " +
 		Muted.Render("queued · "+jobType) + " " +
 		Dim.Render("· id: "+id)
 }
 
+// Divider renders a full-width horizontal rule
 func Divider(width int) string {
-	var line strings.Builder
+	var b strings.Builder
 	for range width {
-		line.WriteString("─")
+		b.WriteString("─")
 	}
-	return Dim.Render(line.String())
+	return Dim.Render(b.String())
 }
 
-func RenderTag(tag string) string {
-	return Tag.Render(tag)
+// RenderTag renders a tag badge — type determines color
+// noteType: "text" | "article" | "image" | "" (muted)
+func RenderTag(tag, noteType string) string {
+	switch noteType {
+	case "article":
+		return TagArticle.Render(tag)
+	case "image":
+		return TagImage.Render(tag)
+	case "text":
+		return Tag.Render(tag)
+	default:
+		return TagMuted.Render(tag)
+	}
+}
+
+// RenderTypeBadge renders a capture type badge
+func RenderTypeBadge(noteType string) string {
+	switch noteType {
+	case "text":
+		return TypeText.Render(noteType)
+	case "article":
+		return TypeArticle.Render(noteType)
+	case "image":
+		return TypeImage.Render(noteType)
+	default:
+		return TagMuted.Render(noteType)
+	}
 }
